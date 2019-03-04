@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>baseapi</groupId>
+  <artifactId>baseapi</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>baseapi</name>
+  <description>base gateway</description>
+  
+  <properties>
+    <skipTests>true</skipTests>
+	<env>sit</env>
+	
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+	
+  <build>
+    <filters>
+	  <filter>src/main/filters/filter-${env}.properties</filter>
+	</filters>
+	<resources>
+	  <resource>
+		<directory>src/main/resources</directory>
+		<filtering>true</filtering>
+	  </resource>
+	</resources>
+		
+    <plugins>
+	  <!-- 打包 -->
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-assembly-plugin</artifactId>
+		<version>2.5.4</version>
+		<executions>
+		  <execution>
+			<id>make-assembly</id>
+			<!-- <phase>process-resources</phase> -->
+			<phase>package</phase>
+			<goals>
+			  <goal>single</goal>
+			</goals>
+			<configuration>
+			  <descriptors>
+				<descriptor>src/main/assemble/tar.xml</descriptor>
+			  </descriptors>
+			  <attach>false</attach>
+			</configuration>
+		  </execution>
+		</executions>
+	  </plugin>
+    </plugins>
+  </build>
+</project>

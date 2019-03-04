@@ -1,0 +1,19 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/2.0.0
+                              http://maven.apache.org/xsd/assembly-2.0.0.xsd">
+	<id>tar</id>
+	<formats>
+	  <format>tar.gz</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+	  <fileSet>
+        <directory>target/classes</directory>
+        <excludes>
+          <exclude>**/META-INF/**</exclude>
+        </excludes>
+        <outputDirectory>/</outputDirectory>
+      </fileSet>
+	</fileSets>
+</assembly>
